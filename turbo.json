@@ -17,6 +17,15 @@
     },
     "clean": {
       "cache": false
+    },
+    "docs:build": {
+      "dependsOn": [],
+      "outputs": ["packages/docs-site/.vitepress/dist/**"],
+      "cache": true
+    },
+    "docs:dev": {
+      "cache": false,
+      "persistent": true
     }
   }
 }

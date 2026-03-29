@@ -12,8 +12,7 @@ MCP servers for Indian and global business tools — connect Claude to Razorpay,
 |---|---|---|
 | [`@mcp-india/razorpay`](./packages/razorpay) | [![npm](https://img.shields.io/npm/v/@mcp-india/razorpay)](https://www.npmjs.com/package/@mcp-india/razorpay) | Payments, orders, settlements, subscriptions, invoices, customers |
 | [`@mcp-india/zoho-crm`](./packages/zoho-crm) | [![npm](https://img.shields.io/npm/v/@mcp-india/zoho-crm)](https://www.npmjs.com/package/@mcp-india/zoho-crm) | Contacts, deals, tasks, calls, notes, pipeline reports |
-
-More packages are planned: `@mcp-india/gst-india`.
+| [`@mcp-india/gst-india`](./packages/gst-india) | [![npm](https://img.shields.io/npm/v/@mcp-india/gst-india)](https://www.npmjs.com/package/@mcp-india/gst-india) | GSTIN validation, tax calculation, HSN/SAC lookup (offline, zero config) |
 
 ---
 
@@ -89,6 +88,7 @@ mcp-india/
   packages/
     razorpay/       # @mcp-india/razorpay MCP server
     zoho-crm/       # @mcp-india/zoho-crm MCP server
+    gst-india/      # @mcp-india/gst-india MCP server (offline)
     shared/         # @mcp-india/shared — shared utilities
   docs/
     adr/            # Architecture Decision Records

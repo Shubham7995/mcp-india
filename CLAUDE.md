@@ -104,6 +104,30 @@ mcp-india/
 │   │   ├── vitest.config.ts
 │   │   ├── package.json
 │   │   └── tsconfig.json
+│   ├── gst-india/                   # @mcp-india/gst-india (offline, zero config)
+│   │   ├── src/
+│   │   │   ├── index.ts             # MCP server entrypoint (no client needed)
+│   │   │   ├── data/
+│   │   │   │   ├── hsn-codes.ts     # 500+ HSN codes with rates + search
+│   │   │   │   ├── sac-codes.ts     # 120+ SAC codes with rates + search
+│   │   │   │   ├── state-codes.ts   # 38 state/UT codes
+│   │   │   │   └── gst-rates.ts     # Rate slab definitions
+│   │   │   ├── tools/
+│   │   │   │   ├── validation.ts    # GSTIN validation, invoice validation, state info
+│   │   │   │   ├── validation.test.ts
+│   │   │   │   ├── validation.spec.ts
+│   │   │   │   ├── calculation.ts   # Tax calculation, supply type, reverse calculation
+│   │   │   │   ├── calculation.test.ts
+│   │   │   │   ├── calculation.spec.ts
+│   │   │   │   ├── hsn.ts           # HSN/SAC search, details, rate slabs
+│   │   │   │   ├── hsn.test.ts
+│   │   │   │   └── hsn.spec.ts
+│   │   │   └── types.ts             # GST types (no client.ts — fully offline)
+│   │   ├── CHANGELOG.md
+│   │   ├── tsup.config.ts
+│   │   ├── vitest.config.ts
+│   │   ├── package.json
+│   │   └── tsconfig.json
 │   └── shared/                      # @mcp-india/shared (internal, not published)
 │       └── src/
 │           ├── index.ts             # Re-exports all shared utilities

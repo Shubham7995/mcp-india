@@ -14,12 +14,12 @@ MCP servers for Indian and global business tools — connect Claude to Razorpay,
 
 | Package | Version | Tools | Description |
 |---|---|---|---|
-| [`@mcp-india/razorpay`](./packages/razorpay) | [![npm](https://img.shields.io/npm/v/@mcp-india/razorpay)](https://www.npmjs.com/package/@mcp-india/razorpay) | 17 | Payments, orders, settlements, subscriptions, invoices, customers |
+| [`@mcp-india/razorpay`](./packages/razorpay) | [![npm](https://img.shields.io/npm/v/@mcp-india/razorpay)](https://www.npmjs.com/package/@mcp-india/razorpay) | 18 | Payments, orders, settlements, subscriptions, invoices, customers |
 | [`@mcp-india/zoho-crm`](./packages/zoho-crm) | [![npm](https://img.shields.io/npm/v/@mcp-india/zoho-crm)](https://www.npmjs.com/package/@mcp-india/zoho-crm) | 14 | Contacts, deals, tasks, calls, notes, pipeline reports |
-| [`@mcp-india/gst-india`](./packages/gst-india) | [![npm](https://img.shields.io/npm/v/@mcp-india/gst-india)](https://www.npmjs.com/package/@mcp-india/gst-india) | 10 | GSTIN validation, tax calculation, HSN/SAC lookup (offline, zero config) |
-| [`@mcp-india/stripe`](./packages/stripe) | [![npm](https://img.shields.io/npm/v/@mcp-india/stripe)](https://www.npmjs.com/package/@mcp-india/stripe) | 20 | Payments, customers, subscriptions, products, invoices, daily dashboard |
+| [`@mcp-india/gst-india`](./packages/gst-india) | [![npm](https://img.shields.io/npm/v/@mcp-india/gst-india)](https://www.npmjs.com/package/@mcp-india/gst-india) | 9 | GSTIN validation, tax calculation, HSN/SAC lookup (offline, zero config) |
+| [`@mcp-india/stripe`](./packages/stripe) | [![npm](https://img.shields.io/npm/v/@mcp-india/stripe)](https://www.npmjs.com/package/@mcp-india/stripe) | 21 | Payments, customers, subscriptions, products, invoices, daily dashboard |
 | [`@mcp-india/hubspot`](./packages/hubspot) | [![npm](https://img.shields.io/npm/v/@mcp-india/hubspot)](https://www.npmjs.com/package/@mcp-india/hubspot) | 18 | Contacts, companies, deals, engagements, pipeline reports |
-| [`@mcp-india/airtable`](./packages/airtable) | [![npm](https://img.shields.io/npm/v/@mcp-india/airtable)](https://www.npmjs.com/package/@mcp-india/airtable) | 13 | Records, schema discovery, bulk operations, table summary |
+| [`@mcp-india/airtable`](./packages/airtable) | [![npm](https://img.shields.io/npm/v/@mcp-india/airtable)](https://www.npmjs.com/package/@mcp-india/airtable) | 12 | Records, schema discovery, bulk operations, table summary |
 
 **92 tools** across 6 servers. All run locally via stdio — zero hosting cost.
 

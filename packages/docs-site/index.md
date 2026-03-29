@@ -15,21 +15,21 @@ hero:
 
 features:
   - title: Razorpay
-    details: 17 tools — payments, orders, settlements, subscriptions, invoices, customers, daily dashboard.
+    details: 18 tools — payments, orders, settlements, subscriptions, invoices, customers, daily dashboard.
     link: /servers/razorpay
   - title: Zoho CRM
     details: 14 tools — contacts, deals, tasks, calls, notes, pipeline summary, revenue forecast.
     link: /servers/zoho-crm
   - title: GST India
-    details: 10 tools — GSTIN validation, tax calculation, HSN/SAC lookup. Fully offline, zero config.
+    details: 9 tools — GSTIN validation, tax calculation, HSN/SAC lookup. Fully offline, zero config.
     link: /servers/gst-india
   - title: Stripe
-    details: 20 tools — payments, customers, subscriptions, products, prices, invoices, daily dashboard.
+    details: 21 tools — payments, customers, subscriptions, products, prices, invoices, daily dashboard.
     link: /servers/stripe
   - title: HubSpot
     details: 18 tools — contacts, companies, deals, engagements, notes, tasks, pipeline reports.
     link: /servers/hubspot
   - title: Airtable
-    details: 13 tools — records, schema discovery, bulk operations, table summary.
+    details: 12 tools — records, schema discovery, bulk operations, table summary.
     link: /servers/airtable
 ---

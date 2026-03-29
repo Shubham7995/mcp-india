@@ -1,0 +1,63 @@
+{
+  "name": "@mcp-india/hubspot",
+  "version": "0.1.0",
+  "description": "MCP server for HubSpot CRM — contacts, companies, deals, engagements, and pipeline reports",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "mcp-india-hubspot": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist .turbo",
+    "start": "node dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "hubspot",
+    "crm",
+    "contacts",
+    "deals",
+    "companies",
+    "claude",
+    "ai"
+  ],
+  "author": "Shubham Shinde",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shubham7995/mcp-india.git",
+    "directory": "packages/hubspot"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^3.24.0",
+    "@mcp-india/shared": "*"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0",
+    "@types/node": "^22.0.0"
+  }
+}

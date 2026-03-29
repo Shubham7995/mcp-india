@@ -6,7 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **mcp-india** is a Turborepo monorepo of MCP (Model Context Protocol) servers exposing India-specific and global business APIs as AI-callable tools. Each server ships as a separate npm package under the `@mcp-india` scope.
 
-**Phase 1 servers**: `@mcp-india/razorpay`, `@mcp-india/zoho-crm`, `@mcp-india/gst-india`
+**Phase 1 servers** (India-focused): `@mcp-india/razorpay`, `@mcp-india/zoho-crm`, `@mcp-india/gst-india`
+**Phase 2 servers** (Global): `@mcp-india/stripe`, `@mcp-india/hubspot`, `@mcp-india/airtable`
 
 MCP servers run on the user's machine (stdio transport) — zero hosting cost. Users install via `npx -y @mcp-india/<server>`.
 
@@ -128,6 +129,52 @@ mcp-india/
 │   │   ├── vitest.config.ts
 │   │   ├── package.json
 │   │   └── tsconfig.json
+│   ├── stripe/                      # @mcp-india/stripe (Stripe SDK, 25 req/s)
+│   │   ├── src/
+│   │   │   ├── index.ts             # MCP server entrypoint + 5 register calls
+│   │   │   ├── tools/
+│   │   │   │   ├── payments.ts      # PaymentIntents: list, get, create, capture + refunds
+│   │   │   │   ├── customers.ts     # Customers: list, get, create, search
+│   │   │   │   ├── subscriptions.ts # Subscriptions + invoices: list, get, create, cancel
+│   │   │   │   ├── products.ts      # Products + prices: list, create
+│   │   │   │   └── dashboard.ts     # Daily revenue summary
+│   │   │   ├── client.ts            # Stripe SDK wrapper + RateLimiter(25/s)
+│   │   │   └── types.ts             # DashboardSummary (SDK covers the rest)
+│   │   ├── CHANGELOG.md
+│   │   ├── tsup.config.ts
+│   │   ├── vitest.config.ts
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   ├── hubspot/                     # @mcp-india/hubspot (native fetch, bearer token)
+│   │   ├── src/
+│   │   │   ├── index.ts             # MCP server entrypoint + 5 register calls
+│   │   │   ├── tools/
+│   │   │   │   ├── contacts.ts      # Contacts: search, get, create, update
+│   │   │   │   ├── companies.ts     # Companies: search, get, create, update
+│   │   │   │   ├── deals.ts         # Deals: search, get, create, update
+│   │   │   │   ├── engagements.ts   # Notes, tasks, email logs, activity list
+│   │   │   │   └── reports.ts       # Pipeline summary, deal forecast
+│   │   │   ├── client.ts            # Native fetch + Bearer auth + RateLimiter(10/s)
+│   │   │   └── types.ts             # HubSpotObject, SearchResponse, Pipeline types
+│   │   ├── CHANGELOG.md
+│   │   ├── tsup.config.ts
+│   │   ├── vitest.config.ts
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   ├── airtable/                    # @mcp-india/airtable (native fetch, PAT + base ID)
+│   │   ├── src/
+│   │   │   ├── index.ts             # MCP server entrypoint + 3 register calls
+│   │   │   ├── tools/
+│   │   │   │   ├── records.ts       # Records: list, get, create, update, delete, search
+│   │   │   │   ├── schema.ts        # Schema: list bases, list tables, get table schema
+│   │   │   │   └── bulk.ts          # Bulk create/update (max 10), table summary
+│   │   │   ├── client.ts            # Native fetch + PAT auth + RateLimiter(5/s)
+│   │   │   └── types.ts             # AirtableRecord, Table, Base, Summary types
+│   │   ├── CHANGELOG.md
+│   │   ├── tsup.config.ts
+│   │   ├── vitest.config.ts
+│   │   ├── package.json
+│   │   └── tsconfig.json
 │   └── shared/                      # @mcp-india/shared (internal, not published)
 │       └── src/
 │           ├── index.ts             # Re-exports all shared utilities
@@ -221,7 +268,7 @@ Write ADRs at decision time, not retroactively. Include rejected alternatives.
 - **Input validation**: Zod schemas defined in the tool file, not separately
 - **API clients**: Dedicated `client.ts` per package — tools never call `fetch` directly
 - **Rate limiting**: All API clients must handle rate limiting and return typed errors
-- **Env vars**: Use each service's native variable names — `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `ZOHO_CLIENT_ID`
+- **Env vars**: Use each service's native variable names — `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `ZOHO_CLIENT_ID`, `STRIPE_SECRET_KEY`, `HUBSPOT_ACCESS_TOKEN`, `AIRTABLE_ACCESS_TOKEN`
 - **Bundling**: tsup compiles each package to ESM
 - **npm packaging**: `files` whitelist (`dist`, `README.md`) + `publishConfig.access: "public"` + `prepublishOnly` build hook
 - **Versioning**: Changesets for coordinated version bumps and changelogs

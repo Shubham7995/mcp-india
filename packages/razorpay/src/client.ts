@@ -176,7 +176,7 @@ export class RazorpayClient {
   // ── Invoices ────────────────────────────────────────────────
 
   async createInvoice(params: {
-    type: string;
+    type: "invoice" | "link";
     customer_id: string;
     line_items: Array<{
       name: string;

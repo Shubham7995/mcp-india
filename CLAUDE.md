@@ -81,6 +81,29 @@ mcp-india/
 │   │   ├── vitest.config.ts
 │   │   ├── package.json
 │   │   └── tsconfig.json
+│   ├── zoho-crm/                    # @mcp-india/zoho-crm
+│   │   ├── src/
+│   │   │   ├── index.ts             # MCP server entrypoint + tool registration
+│   │   │   ├── tools/
+│   │   │   │   ├── contacts.ts      # Contact tools (search, create, update, get)
+│   │   │   │   ├── contacts.test.ts
+│   │   │   │   ├── contacts.spec.ts
+│   │   │   │   ├── deals.ts         # Deal tools (list, create, update_stage, get)
+│   │   │   │   ├── deals.test.ts
+│   │   │   │   ├── deals.spec.ts
+│   │   │   │   ├── activities.ts    # Activity tools (task, list_tasks, log_call, note)
+│   │   │   │   ├── activities.test.ts
+│   │   │   │   ├── activities.spec.ts
+│   │   │   │   ├── reports.ts       # Report tools (pipeline summary, revenue forecast)
+│   │   │   │   ├── reports.test.ts
+│   │   │   │   └── reports.spec.ts
+│   │   │   ├── client.ts            # Zoho CRM API client (OAuth2 + native fetch)
+│   │   │   └── types.ts             # Zoho CRM response/request types
+│   │   ├── CHANGELOG.md
+│   │   ├── tsup.config.ts
+│   │   ├── vitest.config.ts
+│   │   ├── package.json
+│   │   └── tsconfig.json
 │   └── shared/                      # @mcp-india/shared (internal, not published)
 │       └── src/
 │           ├── index.ts             # Re-exports all shared utilities

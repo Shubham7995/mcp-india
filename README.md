@@ -1,21 +1,27 @@
 # mcp-india
 
+[![CI](https://github.com/Shubham7995/mcp-india/actions/workflows/test.yml/badge.svg)](https://github.com/Shubham7995/mcp-india/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/Shubham7995/mcp-india)](https://github.com/Shubham7995/mcp-india/stargazers)
 
 MCP servers for Indian and global business tools — connect Claude to Razorpay, Zoho CRM, GST India, Stripe, HubSpot, Airtable, and more via the [Model Context Protocol](https://modelcontextprotocol.io).
+
+**[Documentation](https://shubham7995.github.io/mcp-india)** | **[npm](https://www.npmjs.com/org/mcp-india)**
 
 ---
 
 ## Packages
 
-| Package | Version | Description |
-|---|---|---|
-| [`@mcp-india/razorpay`](./packages/razorpay) | [![npm](https://img.shields.io/npm/v/@mcp-india/razorpay)](https://www.npmjs.com/package/@mcp-india/razorpay) | Payments, orders, settlements, subscriptions, invoices, customers |
-| [`@mcp-india/zoho-crm`](./packages/zoho-crm) | [![npm](https://img.shields.io/npm/v/@mcp-india/zoho-crm)](https://www.npmjs.com/package/@mcp-india/zoho-crm) | Contacts, deals, tasks, calls, notes, pipeline reports |
-| [`@mcp-india/gst-india`](./packages/gst-india) | [![npm](https://img.shields.io/npm/v/@mcp-india/gst-india)](https://www.npmjs.com/package/@mcp-india/gst-india) | GSTIN validation, tax calculation, HSN/SAC lookup (offline, zero config) |
-| [`@mcp-india/stripe`](./packages/stripe) | [![npm](https://img.shields.io/npm/v/@mcp-india/stripe)](https://www.npmjs.com/package/@mcp-india/stripe) | Payments, customers, subscriptions, products, invoices, daily dashboard |
-| [`@mcp-india/hubspot`](./packages/hubspot) | [![npm](https://img.shields.io/npm/v/@mcp-india/hubspot)](https://www.npmjs.com/package/@mcp-india/hubspot) | Contacts, companies, deals, engagements, pipeline reports |
-| [`@mcp-india/airtable`](./packages/airtable) | [![npm](https://img.shields.io/npm/v/@mcp-india/airtable)](https://www.npmjs.com/package/@mcp-india/airtable) | Records, schema discovery, bulk operations, table summary |
+| Package | Version | Tools | Description |
+|---|---|---|---|
+| [`@mcp-india/razorpay`](./packages/razorpay) | [![npm](https://img.shields.io/npm/v/@mcp-india/razorpay)](https://www.npmjs.com/package/@mcp-india/razorpay) | 17 | Payments, orders, settlements, subscriptions, invoices, customers |
+| [`@mcp-india/zoho-crm`](./packages/zoho-crm) | [![npm](https://img.shields.io/npm/v/@mcp-india/zoho-crm)](https://www.npmjs.com/package/@mcp-india/zoho-crm) | 14 | Contacts, deals, tasks, calls, notes, pipeline reports |
+| [`@mcp-india/gst-india`](./packages/gst-india) | [![npm](https://img.shields.io/npm/v/@mcp-india/gst-india)](https://www.npmjs.com/package/@mcp-india/gst-india) | 10 | GSTIN validation, tax calculation, HSN/SAC lookup (offline, zero config) |
+| [`@mcp-india/stripe`](./packages/stripe) | [![npm](https://img.shields.io/npm/v/@mcp-india/stripe)](https://www.npmjs.com/package/@mcp-india/stripe) | 20 | Payments, customers, subscriptions, products, invoices, daily dashboard |
+| [`@mcp-india/hubspot`](./packages/hubspot) | [![npm](https://img.shields.io/npm/v/@mcp-india/hubspot)](https://www.npmjs.com/package/@mcp-india/hubspot) | 18 | Contacts, companies, deals, engagements, pipeline reports |
+| [`@mcp-india/airtable`](./packages/airtable) | [![npm](https://img.shields.io/npm/v/@mcp-india/airtable)](https://www.npmjs.com/package/@mcp-india/airtable) | 13 | Records, schema discovery, bulk operations, table summary |
+
+**92 tools** across 6 servers. All run locally via stdio — zero hosting cost.
 
 ---
 
@@ -25,9 +31,9 @@ Each package runs as a standalone MCP server. No global install needed — npx f
 
 **1. Get your API credentials**
 
-For Razorpay: visit [dashboard.razorpay.com/app/keys](https://dashboard.razorpay.com/app/keys) and generate a key pair. Use `rzp_test_` keys for development.
+See each package's `.env.example` for required variables and dashboard links. Exception: `@mcp-india/gst-india` is fully offline and needs zero config.
 
-**2. Add the server to Claude Desktop**
+**2. Add servers to Claude Desktop**
 
 Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
 
@@ -41,18 +47,58 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) o
         "RAZORPAY_KEY_ID": "rzp_test_YOUR_KEY_ID",
         "RAZORPAY_KEY_SECRET": "YOUR_KEY_SECRET"
       }
+    },
+    "zoho-crm": {
+      "command": "npx",
+      "args": ["-y", "@mcp-india/zoho-crm"],
+      "env": {
+        "ZOHO_CLIENT_ID": "1000.XXXXXXXXXXXX",
+        "ZOHO_CLIENT_SECRET": "XXXXXXXXXXXXXXXX",
+        "ZOHO_REFRESH_TOKEN": "1000.XXXXXXXX.XXXXXXXX"
+      }
+    },
+    "gst-india": {
+      "command": "npx",
+      "args": ["-y", "@mcp-india/gst-india"]
+    },
+    "stripe": {
+      "command": "npx",
+      "args": ["-y", "@mcp-india/stripe"],
+      "env": {
+        "STRIPE_SECRET_KEY": "sk_test_YOUR_SECRET_KEY"
+      }
+    },
+    "hubspot": {
+      "command": "npx",
+      "args": ["-y", "@mcp-india/hubspot"],
+      "env": {
+        "HUBSPOT_ACCESS_TOKEN": "pat-na1-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+      }
+    },
+    "airtable": {
+      "command": "npx",
+      "args": ["-y", "@mcp-india/airtable"],
+      "env": {
+        "AIRTABLE_ACCESS_TOKEN": "patXXXXXXXXXXXXXX.XXXXXXXX",
+        "AIRTABLE_BASE_ID": "appXXXXXXXXXXXXXX"
+      }
     }
   }
 }
 ```
 
+For Cursor, Windsurf, VS Code, and Claude Code CLI setup, see the [Configuration guide](https://shubham7995.github.io/mcp-india/guide/configuration).
+
 **3. Restart Claude Desktop and start asking questions**
 
 > "What is my Razorpay revenue today?"
-> "List the last 10 failed payments."
-> "Create a refund for payment pay_ABC123."
+> "Search for contacts named Alice in Zoho CRM."
+> "Is GSTIN 27AAPFU0939F1ZV valid?"
+> "List my last 10 Stripe payments."
+> "Show my HubSpot deal pipeline summary."
+> "List all records in my Airtable Contacts table."
 
-See the package README for the full list of available tools and more examples.
+See each package README for the full list of available tools and more examples.
 
 ---
 
@@ -96,6 +142,7 @@ mcp-india/
     hubspot/        # @mcp-india/hubspot MCP server (native fetch)
     airtable/       # @mcp-india/airtable MCP server (native fetch)
     shared/         # @mcp-india/shared — shared utilities
+    docs-site/      # VitePress documentation site
   docs/
     adr/            # Architecture Decision Records
   turbo.json        # Turborepo pipeline configuration

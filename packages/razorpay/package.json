@@ -1,0 +1,62 @@
+{
+  "name": "@mcp-india/razorpay",
+  "version": "0.1.0",
+  "description": "MCP server for Razorpay payment gateway - payments, orders, settlements, subscriptions, invoices",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "mcp-india-razorpay": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist .turbo",
+    "start": "node dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "razorpay",
+    "payments",
+    "india",
+    "claude",
+    "ai"
+  ],
+  "author": "Shubham Shinde",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shubham7995/mcp-india.git",
+    "directory": "packages/razorpay"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "razorpay": "^2.9.0",
+    "zod": "^3.24.0",
+    "@mcp-india/shared": "*"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0",
+    "@types/node": "^22.0.0"
+  }
+}
